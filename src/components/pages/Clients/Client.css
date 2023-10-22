@@ -1,0 +1,49 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    align-items: center;
+    height: 50vh;
+  
+  }
+  .info-box {
+    border: 1px solid #ccc; /* Add a border to enclose the information */
+    padding: 20px;
+    border-radius: 10px;
+    width: 350px; /* Adjust the width as needed */
+  }
+  .blue-label {
+    color: rgb(119, 119, 200); /* Cambia el color del texto según tus preferencias */
+    font-weight: bold; /* Puedes ajustar la negrita si lo deseas */
+    font-size: 16px; /* Ajusta el tamaño de fuente según tus preferencias */
+  }
+  
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    
+  }
+  
+  
+  
+  .info input {
+    width: 300px;
+    height: 30px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius:15px ;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+  
+  }
+  .info button {
+    width: 300px;
+    height: 50px;
+    margin-top: 5px;
+    
+  }
