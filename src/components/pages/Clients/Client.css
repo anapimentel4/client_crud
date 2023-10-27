@@ -2,9 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-  
     align-items: center;
-    height: 50vh;
+    height: 100vh;
   
   }
   .info-box {
@@ -46,4 +45,12 @@
     height: 50px;
     margin-top: 5px;
     
+  }
+
+  .form-container {
+    width: 80%; 
+    margin: 0 auto; 
+        display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 10px; 
   }

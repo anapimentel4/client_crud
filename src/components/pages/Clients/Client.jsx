@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import validator from 'validator';
 
-import './client.css'
+//import './client.css'
 import axios from 'axios';
 
 import Swal from 'sweetalert2';
@@ -8,9 +10,12 @@ import withReactContent from 'sweetalert2-react-content';
 
 const MySwal = withReactContent(Swal)
 
+
 export const Client = () => {
-  const [nombre, setNombre] = useState("");
-  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const [nombre, setNombre] = useState('');
+  const [email, setEmail] = useState('');
+  const [isValidEmail, setIsValidEmail] = useState(true);
   const [clientes, setClientes] = useState([]);
   const [editar, setEditar] = useState(false);
   const [id, setId] = useState("");
@@ -23,7 +28,7 @@ export const Client = () => {
 
 
   const agregarCliente = async () => {
-    const regexNombre = /^[A-Za-z\s]+$/;
+
     if (!nombre || !email) {
       Swal.fire({
         icon: 'error',
@@ -32,11 +37,11 @@ export const Client = () => {
       });
       return;
     }
-    if (!regexNombre.test(nombre)) {
+    if (!validator.isEmail(email)) {
       Swal.fire({
         icon: 'error',
-        title: 'Nombre inválido',
-        text: 'El nombre solo puede contener letras y espacios',
+        title: 'Correo electrónico inválido',
+        text: 'El formato del correo electrónico es incorrecto'
       });
       return;
     }
@@ -64,10 +69,11 @@ export const Client = () => {
         html: `<i>Cliente <strong>${nombre}</strong> fue registrado satisfactoriamente</i>`,
         timer: 5000,
       });
+      // Limpiar el campos
       setNombre('');
       setEmail('');
-      setUsername(''); // Limpia el campo de nombre de usuario
-      setPassword(''); // Limpia el campo de contraseña
+      setUsername(''); 
+      setPassword(''); 
 
 
       obtenerClientes();
@@ -194,7 +200,7 @@ export const Client = () => {
   useEffect(() => {
     obtenerClientes();
   }, []);
-
+//TODO: CREATE A DIFERENT MODL EDIT 
 
   return (
     <div className='container'>
@@ -300,8 +306,13 @@ export const Client = () => {
                     <button type="button"
                       onClick={() => {
                         editClient(cliente)
+                        navigate(`/client/${cliente.id}/edit`)
                       }}
-                      className="btn btn-primary">Edit</button>
+                      className="btn btn-primary">
+                       
+                        Edit
+                        
+                        </button>
                     <button type="button" onClick={() => eliminarCliente(cliente)}
                       className="btn btn-danger">Delete</button>
                   </div>

@@ -19,6 +19,7 @@ export const  AppRouter=()=> {
             <Route path="/products/*" element={ <Products/>}></Route>
             <Route path="/profile/*"  element={ <Profile/>}></Route>
             <Route path="*"           element={ <Client/>}></Route>
+            
 
 
 
